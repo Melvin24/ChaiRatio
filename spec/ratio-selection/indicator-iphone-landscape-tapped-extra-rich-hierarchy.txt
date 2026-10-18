@@ -1,0 +1,57 @@
+Attributes: Application, 0x1105fc8c0, pid: 90690, label: 'ChaiRatio'
+Element subtree:
+ →Application, 0x1105fc8c0, pid: 90690, label: 'ChaiRatio'
+    Window (Main), 0x1105fe440, {{0.0, 0.0}, {844.0, 390.0}}
+      Other, 0x1105febc0, {{0.0, 0.0}, {844.0, 390.0}}
+        Other, 0x1105ff0c0, {{0.0, 0.0}, {844.0, 390.0}}
+          Other, 0x1105ff200, {{0.0, 0.0}, {844.0, 390.0}}
+            Other, 0x1105fed00, {{0.0, 0.0}, {844.0, 390.0}}
+              Other, 0x1105fee40, {{0.0, 0.0}, {844.0, 390.0}}
+                NavigationBar, 0x1105fd540, {{0.0, 24.0}, {844.0, 54.0}}, identifier: 'ChaiRatio'
+                  StaticText, 0x1105fdb80, {{383.7, 35.7}, {76.7, 20.7}}, label: 'ChaiRatio'
+                  Other, 0x1105fc000, {{754.0, 28.0}, {48.0, 36.0}}
+                    Other, 0x1105fde00, {{754.0, 28.0}, {48.0, 36.0}}
+                      Button, 0x1105fdf40, {{754.0, 28.0}, {48.0, 36.0}}, identifier: 'info.circle', label: 'Know your measures'
+                Other, 0x1105fe800, {{0.0, 0.0}, {844.0, 390.0}}
+                  Other, 0x1105fdcc0, {{0.0, 0.0}, {844.0, 390.0}}
+                    Other, 0x1105fe940, {{0.0, 0.0}, {844.0, 390.0}}
+                      Other, 0x1105fd900, {{0.0, 0.0}, {844.0, 390.0}}
+                        ScrollView, 0x1105fd7c0, {{0.0, 0.0}, {844.0, 390.0}}
+                          Other, 0x104fd1f40, {{-2953.0, 0.0}, {3750.0, 370.0}}
+                            Other, 0x104fd1900, {{-1453.0, 0.0}, {2250.0, 390.0}}
+                              ScrollView, 0x104fd2440, {{-1453.0, -0.0}, {750.0, 390.0}}
+                                Other, 0x104fd3d40, {{-1453.0, -23.7}, {750.0, 393.7}}
+                              ScrollView, 0x104fd3840, {{-703.0, 0.0}, {750.0, 390.0}}
+                                Other, 0x104fd0140, {{-703.0, 78.0}, {750.0, 393.7}}
+                              ScrollView, 0x104fd3c00, {{47.0, 0.0}, {750.0, 390.0}}
+                                Other, 0x11088c000, {{47.0, 78.0}, {750.0, 393.7}}
+                                  Other, 0x11088c140, {{71.0, 114.0}, {702.0, 159.0}}, label: 'Water to milk ratio', value: 1 parts water, 3 p...
+                                    StaticText, 0x11088c280, {{71.0, 114.0}, {98.0, 14.3}}, label: 'WATER : MILK'
+                                    StaticText, 0x11088c3c0, {{71.0, 134.3}, {118.0, 138.7}}, label: '1:3'
+                                    StaticText, 0x11088c500, {{245.0, 127.0}, {94.3, 26.3}}, label: 'Extra rich'
+                                    StaticText, 0x11088c640, {{245.0, 163.3}, {270.7, 20.3}}, label: 'A milk-heavy cup. Simmer carefully.'
+                                    Other, 0x11088c780, {{245.0, 205.7}, {528.0, 12.0}}
+                                    StaticText, 0x11088c8c0, {{245.0, 229.7}, {156.0, 18.0}}, label: '75% milk · 25% water'
+                                    StaticText, 0x11088ca00, {{245.0, 255.7}, {137.0, 14.3}}, label: 'Most milk · End of range'
+                                  Button, 0x11088cb40, {{312.0, 319.0}, {44.0, 44.0}}, label: '3:1, Tea-forward'
+                                  Button, 0x11088cc80, {{356.0, 319.0}, {44.0, 44.0}}, label: '2:1, Light'
+                                  Button, 0x11088cdc0, {{400.0, 319.0}, {44.0, 44.0}}, label: '1:1, Balanced'
+                                  Button, 0x11088cf00, {{444.0, 319.0}, {44.0, 44.0}}, label: '1:2, Rich'
+                                  Button, 0x11088d040, {{488.0, 319.0}, {44.0, 44.0}}, label: '1:3, Extra rich', Selected
+                                  StaticText, 0x11088d180, {{353.3, 363.0}, {137.3, 14.3}}, label: 'Swipe to explore · 5 of 5'
+                                  Button, 0x11088d2c0, {{164.0, 399.3}, {516.0, 52.3}}, label: 'Let’s make chai'
+                                    StaticText, 0x11088d400, {{345.7, 415.3}, {122.7, 20.3}}, label: 'Let’s make chai'
+                                    Image, 0x11088d540, {{480.3, 419.0}, {16.0, 13.3}}, identifier: 'arrow.forward', label: 'Forward-Pointing Arrow'
+                          Other, 0x11088d680, {{0.0, 0.0}, {844.0, 390.0}}
+                            Other, 0x11088d7c0, {{0.0, 0.0}, {844.0, 118.0}}
+                          Other, 0x11088d900, {{0.0, 0.0}, {844.0, 390.0}}
+                            Other, 0x11088da40, {{0.0, 0.0}, {844.0, 118.0}}
+                Toolbar, 0x11088db80, {{0.0, 0.0}, {844.0, 390.0}}, identifier: 'Toolbar', label: 'Toolbar'
+                  Other, 0x11088dcc0, {{0.0, 0.0}, {844.0, 390.0}}
+Path to element:
+ →Application, 0x1105fc8c0, pid: 90690, label: 'ChaiRatio'
+Query chain:
+ →Find: Target Application 'devplaceholder.O0I6EMQR.ChaiRatio'
+  Output: {
+    Application, 0x11088de00, pid: 90690, label: 'ChaiRatio'
+  }

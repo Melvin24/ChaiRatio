@@ -1,14 +1,20 @@
 # ChaiRatio: Product Requirements Document
 
-**Status:** Draft  
-**Platform:** iOS  
+**Status:** Product requirements draft; Daily Ritual visual and interaction design approved 10 October 2026  
+**Platform:** iPhone and iPad on iOS/iPadOS 26 or later. Native macOS, Mac Catalyst, and Designed for iPhone/iPad on Mac are excluded (decision: 11 October 2026).
 **Product type:** Offline-first chai recipe calculator and guide
+
+**Approved design:** [Daily Ritual design decision](../design-showcase/APPROVED-DESIGN.md) and [frozen interactive prototype](../design-showcase/daily-ritual-approved-2026-10-10.html). These define the native app’s intended final appearance and navigation.
+
+**Adaptive revision, 17 October 2026:** The product owner authorized layout changes to support different screen sizes, orientations, and text sizes. The [adaptive layout revision](../spec/ratio-selection/adaptive-layout-verification.md) supersedes conflicting fixed-layout details in the prototype.
+
+**Indicator and paging revision, 18 October 2026:** Use indicators without visible ratio labels, restore horizontal paging at all sizes, and use soft top scroll edges. See [current revision](../spec/ratio-selection/indicator-paging-verification.md).
 
 ## 1. Product Summary
 
 ChaiRatio helps people make Indian chai for a chosen number of servings without doing ratio math themselves. A user chooses a water-to-milk ratio and serving count; the app converts the recipe into clear water and milk amounts, with optional tea and sugar quantities. It also offers a small set of guided chai methods and explains the measuring units used.
 
-The first screen makes the ratio choices the main experience: users move vertically through a finite set of ratios, see the chai color shift with the milk proportion, and can start calculating with the selected ratio.
+The first screen makes the ratio choices the main experience: users move horizontally through a finite set of ratios, see the chai color shift with the milk proportion, and can start calculating with the selected ratio.
 
 ## 2. Problem and Opportunity
 
@@ -80,13 +86,13 @@ The first release should establish baseline measurements before setting numeric 
 3. **Methods**: browse and follow at least three preparation guides.
 4. **Measurements**: review unit definitions and the assumptions used by the calculator.
 
-Primary navigation may use a compact tab bar for Calculator, Methods, and Measurements, while the ratios screen remains the launch screen. The “Let’s make chai” action opens the calculator with the current ratio preselected.
+Use a navigation stack with Ratios as the launch screen. “Let’s make chai” pushes Calculator with the selected ratio applied. Calculator has a floating bottom “Methods →” primary button, with its content scrolling behind it; this pushes Methods. Do not use a tab bar. Keep an `info.circle` SF Symbol in the top-right navigation bar on every main screen; it presents “Know your measures” modally and preserves the underlying screen state on dismissal.
 
 ## 8. Functional Requirements
 
 ### 8.1 Ratio selection
 
-- Present one ratio at a time in a vertically paged or snapping scroll interaction.
+- Present one ratio at a time in a horizontally paged or snapping scroll interaction. Include page indicators and accessible selection actions; do not show up/down arrow controls.
 - Each option includes a numeric water:milk ratio, a concise name, and a brief neutral description.
 - Changing the selected ratio updates the background color and ratio-dependent recipe values.
 - Include text or another non-color indicator of milk share for accessibility and clarity.
@@ -110,13 +116,13 @@ The ratio set is finite for the first release. These five presets provide a broa
 - Default to the ratio selected on the home screen.
 - Allow the user to change ratio without navigating away.
 - Let the user set a whole-number serving count from 1 to 20 using a stepper and direct numeric entry.
-- Let the user choose a serving size, with a default of 150 mL and selectable 150, 200, or 250 mL options.
+- Label serving size choices Small (150 mL, default), Medium (200 mL), and Large (250 mL). Explain their volumes in the measurement sheet.
 - Display water and milk quantities in mL; show L for larger amounts where useful.
 - Show equivalent 200 mL glasses, including fractions to the nearest quarter glass, while retaining mL as the precise value.
-- Offer a simple tea strength choice (Mild, Regular, Strong) and sweetness choice (None, Light, Regular, Sweet). These choices adjust tea and sugar only, not water-to-milk ratio.
+- Offer a simple tea strength choice (Regular, Strong) and sweetness choice (None, Regular, Sweet). These choices adjust tea and sugar only, not water-to-milk ratio.
 - Show tea quantity in grams where recipe content has been validated, and show sugar in teaspoons or grams only when its conversion is defined and tested.
 - Recalculate immediately when any input changes.
-- Keep calculator values stable when moving to another tab and back during the current session. On a new launch, restore the preferred ratio; other calculator inputs may reset to defaults in MVP.
+- Keep calculator values stable when pushing another screen, navigating back, or opening and dismissing the measurement sheet during the current session. On a new launch, restore the preferred ratio; other calculator inputs may reset to defaults in MVP.
 
 ### 8.3 Calculation and rounding
 
@@ -154,9 +160,9 @@ Each recipe must state its ratio, serving size, preparation time, and whether it
 
 ### 8.5 Measurements and definitions
 
-The Measurements page must define:
+The “Know your measures” modal sheet must define:
 
-- **Serving:** the intended finished amount poured for one person; default 150 mL, configurable in the calculator.
+- **Serving:** the intended finished amount poured for one person: Small = 150 mL (default), Medium = 200 mL, Large = 250 mL. Actual finished volume varies with boiling loss.
 - **Glass:** a calculator unit equal to 200 mL. It is an equivalence, not an assumption that every household glass has this capacity.
 - **Teaspoon:** 5 mL by volume.
 - **Tablespoon:** 15 mL by volume.
@@ -169,11 +175,11 @@ Do not label a teaspoon as a fixed 10 g. If ingredient amounts are shown in gram
 ### First use
 
 1. User lands on the default ratio with its label and description.
-2. User scrolls through ratio options and selects one.
+2. User swipes horizontally through ratio options and selects one.
 3. User taps “Let’s make chai.”
-4. Calculator opens with that ratio, default serving count, and serving size.
+4. Calculator is pushed with that ratio, default serving count, and Small serving size.
 5. User adjusts servings or preferences and reads the ingredient amounts.
-6. User optionally opens a matching method or the Measurements page.
+6. User taps “Methods →” to browse methods, or opens the measurement sheet from the navigation bar’s info icon.
 
 ### Repeat use
 
@@ -216,14 +222,14 @@ If analytics are included, collect only aggregate product events needed to under
 
 ## 14. Acceptance Criteria
 
-- A user can select each available ratio by vertical scrolling and see a corresponding chai-color change.
+- A user can select each available ratio by horizontal paging and see a corresponding chai-color change.
 - Presets include 3:1, 2:1, 1:1, 1:2, and 1:3, ordered from tea-forward to milk-forward.
 - The ratio label and description update with selection, and the selected ratio persists after relaunch.
 - “Let’s make chai” opens the calculator with the selected ratio applied.
 - Changing serving count, serving size, ratio, strength, or sweetness updates the appropriate ingredient results.
 - Water and milk are shown in mL and 200 mL glass equivalents, with ratio math matching the documented formula within display rounding.
 - A four-serving, 150 mL, 1:1 calculation at yield factor 1.0 displays 300 mL water and 300 mL milk.
-- The Measurements page clearly distinguishes serving volume, 200 mL glass volume, teaspoon volume, tablespoon volume, and ingredient weight.
+- The measurement modal is available from every main screen and clearly distinguishes Small/Medium/Large serving volumes, 200 mL glass volume, teaspoon volume, tablespoon volume, and ingredient weight.
 - At least three complete, reviewed preparation guides are available offline.
 - Core screens support VoiceOver, Dynamic Type, and usable contrast without communicating ratio selection by color alone.
 
@@ -238,8 +244,7 @@ If analytics are included, collect only aggregate product events needed to under
 ## 16. Open Decisions
 
 - Confirm whether all presets use the same yield factor.
-- Decide whether 150 mL should remain the default serving size or whether the audience expects a different cup size.
 - Kitchen-test the three methods, including the point at which milk is added and how long the tea is boiled.
 - Confirm tea and sugar dose tables for strength and sweetness options, including whether both grams and spoon equivalents should be displayed.
-- Confirm supported iOS version and whether the first release should localize units or language beyond English and metric.
+- Decide whether the first release should localize units or language beyond English and metric.
 - Decide whether calculator servings above 20 are needed for family or event batches.

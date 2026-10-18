@@ -1,0 +1,222 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ mL" : {
+      "comment" : "Serving volume in milliliters."
+    },
+    "%@ milk" : {
+      "comment" : "Exact milk percentage of the water and milk mixture."
+    },
+    "%@ · %@ water" : {
+      "comment" : "Mixture percentages. First value describes the milk share, second is the water percentage.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@ water"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "comment" : "Ratio selection button. First value is the water-to-milk ratio, second is the preset name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@:%@" : {
+      "comment" : "Water-to-milk ratio. First value is water parts, second is milk parts.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@:%2$@"
+          }
+        }
+      }
+    },
+    "%lld of %lld" : {
+      "comment" : "Selected ratio position. First value is its one-based position, second is the total number of ratios.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "%lld parts water, %lld parts milk. %@. %@. %@." : {
+      "comment" : "VoiceOver ratio summary: water parts, milk parts, name, milk percentage, and position.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld parts water, %2$lld parts milk. %3$@. %4$@. %5$@."
+          }
+        }
+      }
+    },
+    "%lld parts water, %lld parts milk. %@. %@. %@. %@" : {
+      "comment" : "VoiceOver ratio summary: water parts, milk parts, name, milk percentage, position, and range endpoint.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld parts water, %2$lld parts milk. %3$@. %4$@. %5$@. %6$@"
+          }
+        }
+      }
+    },
+    "15 mL" : {
+
+    },
+    "200 mL" : {
+
+    },
+    "5 mL" : {
+
+    },
+    "A generous cup" : {
+
+    },
+    "A little clarity in every cup." : {
+
+    },
+    "A little cup" : {
+
+    },
+    "A measuring equivalent, separate from serving size. Your household glass may hold a different amount." : {
+
+    },
+    "A milk-heavy cup. Simmer carefully." : {
+
+    },
+    "An everyday cup" : {
+
+    },
+    "Balanced" : {
+
+    },
+    "Calculator" : {
+
+    },
+    "ChaiRatio" : {
+
+    },
+    "Close measurements and return to your chai." : {
+      "comment" : "Accessibility hint for the Done button in the measurements reference sheet."
+    },
+    "Choose how much chai you’d like per person." : {
+
+    },
+    "Done" : {
+
+    },
+    "Equal parts water and milk." : {
+
+    },
+    "Equal to three teaspoons by volume." : {
+
+    },
+    "Extra rich" : {
+
+    },
+    "Find your cup size" : {
+
+    },
+    "Glass" : {
+
+    },
+    "Grams" : {
+
+    },
+    "Know your measures" : {
+
+    },
+    "Large" : {
+
+    },
+    "Let’s make chai" : {
+
+    },
+    "Light" : {
+
+    },
+    "Liquid volumes are rounded to 5 mL below 1 L and 10 mL at or above it; glass equivalents to the nearest quarter." : {
+
+    },
+    "Measurements" : {
+
+    },
+    "Medium" : {
+
+    },
+    "More milk than water. A rounder cup." : {
+
+    },
+    "More water relative to milk." : {
+
+    },
+    "More water than milk. A lighter balance." : {
+
+    },
+    "Most milk · End of range" : {
+
+    },
+    "Most water · Start of range" : {
+
+    },
+    "Rich" : {
+
+    },
+    "Small" : {
+
+    },
+    "Small is the default. These are serving sizes, not standard household cup measurements. Finished volume varies with boiling loss." : {
+
+    },
+    "Spoon-to-gram conversion varies by ingredient. A teaspoon is not a fixed weight." : {
+
+    },
+    "Swipe to explore · %@" : {
+      "comment" : "Ratio selector hint. The variable is the selected position, such as 3 of 5."
+    },
+    "Tablespoon" : {
+
+    },
+    "Tea-forward" : {
+
+    },
+    "Teaspoon" : {
+
+    },
+    "Volume, not weight. Use a measuring teaspoon." : {
+
+    },
+    "WATER : MILK" : {
+
+    },
+    "Water : Milk" : {
+
+    },
+    "Water to milk ratio" : {
+
+    },
+    "Weight" : {
+
+    },
+    "Your selected ratio is ready. Ingredient calculations will be added in the next feature." : {
+
+    },
+    "approximately %@ milk" : {
+      "comment" : "Milk percentage rounded to a whole number."
+    }
+  },
+  "version" : "1.0"
+}

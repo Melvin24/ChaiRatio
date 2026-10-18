@@ -1,0 +1,123 @@
+Attributes: Application, 0x112bb5180, pid: 75263, label: 'ChaiRatio'
+Element subtree:
+ →Application, 0x112bb5180, pid: 75263, label: 'ChaiRatio'
+    Window (Main), 0x112bb5540, {{0.0, 0.0}, {390.0, 844.0}}
+      Other, 0x112bb5400, {{0.0, 0.0}, {390.0, 844.0}}
+        Other, 0x112bb52c0, {{0.0, 0.0}, {390.0, 844.0}}
+          Other, 0x112bb4c80, {{-390.0, -844.0}, {1170.0, 2532.0}}
+          Other, 0x112bb5040, {{0.0, 0.0}, {390.0, 844.0}}
+            Other, 0x112bb4f00, {{0.0, 0.0}, {390.0, 844.0}}
+              Other, 0x112bb4dc0, {{0.0, 0.0}, {390.0, 844.0}}
+                NavigationBar, 0x112bb4780, {{0.0, 47.0}, {390.0, 54.0}}, identifier: 'ChaiRatio'
+                  StaticText, 0x112bb4b40, {{148.7, 56.3}, {92.7, 25.3}}, label: 'ChaiRatio'
+                  Other, 0x113174640, {{322.0, 51.0}, {48.0, 36.0}}
+                    Other, 0x113174780, {{322.0, 51.0}, {48.0, 36.0}}
+                      Button, 0x1131748c0, {{322.0, 51.0}, {48.0, 36.0}}, identifier: 'info.circle', label: 'Know your measures'
+                Other, 0x113174a00, {{0.0, 0.0}, {390.0, 844.0}}
+                  Other, 0x113174b40, {{0.0, 0.0}, {390.0, 844.0}}
+                    Other, 0x113174c80, {{0.0, 0.0}, {390.0, 844.0}}
+                      Other, 0x113174dc0, {{0.0, 0.0}, {390.0, 844.0}}
+                        ScrollView, 0x113174f00, {{0.0, 0.0}, {390.0, 844.0}}, Disabled
+                          Other, 0x113175040, {{-780.0, 0.0}, {1950.0, 810.0}}
+                            Other, 0x113175180, {{-390.0, 0.0}, {1170.0, 844.0}}, Disabled
+                              ScrollView, 0x1131752c0, {{-390.0, 0.0}, {390.0, 844.0}}, Disabled
+                                Other, 0x113175400, {{-390.0, 101.0}, {390.0, 1121.7}}
+                              ScrollView, 0x113175540, {{0.0, 0.0}, {390.0, 844.0}}, Disabled
+                                Other, 0x113175680, {{0.0, 101.0}, {390.0, 1001.7}}
+                                  Other, 0x1131757c0, {{24.0, 137.0}, {342.0, 522.0}}, label: 'Water to milk ratio', value: 1 parts water, 1 p..., Disabled
+                                    StaticText, 0x113175b80, {{24.0, 137.0}, {284.3, 51.3}}, label: 'WATER : MILK', Disabled
+                                    StaticText, 0x113175a40, {{24.0, 194.3}, {55.0, 71.7}}, label: '1:1', Disabled
+                                    StaticText, 0x113175900, {{24.0, 294.0}, {233.3, 67.0}}, label: 'Balanced', Disabled
+                                    StaticText, 0x1131e8000, {{24.0, 371.0}, {334.7, 125.3}}, label: 'Equal parts water and milk.', Disabled
+                                    Other, 0x1131e8140, {{24.0, 518.3}, {342.0, 12.0}}, Disabled
+                                    StaticText, 0x1131e8280, {{24.0, 542.3}, {238.0, 116.7}}, label: '50% milk · 50% water', Disabled
+                                  Button, 0x1131e83c0, {{85.0, 695.0}, {44.0, 44.0}}, label: '3:1, Tea-forward', Disabled
+                                  Button, 0x1131e8500, {{129.0, 695.0}, {44.0, 44.0}}, label: '2:1, Light', Disabled
+                                  Button, 0x1131e8640, {{173.0, 695.0}, {44.0, 44.0}}, label: '1:1, Balanced', Selected, Disabled
+                                  Button, 0x1131e8780, {{217.0, 695.0}, {44.0, 44.0}}, label: '1:2, Rich', Disabled
+                                  Button, 0x1131e88c0, {{261.0, 695.0}, {44.0, 44.0}}, label: '1:3, Extra rich', Disabled
+                                  StaticText, 0x1131e8a00, {{30.7, 739.0}, {328.7, 102.3}}, label: 'Swipe to explore · 3 of 5', Disabled
+                                  Button, 0x1131e8b40, {{22.0, 863.3}, {346.0, 219.3}}, label: 'Let’s make chai', Disabled
+                                    StaticText, 0x1131e8c80, {{88.7, 879.3}, {139.7, 187.3}}, label: 'Let’s make chai', Disabled
+                                    Image, 0x1131e8dc0, {{245.0, 952.7}, {49.7, 41.0}}, identifier: 'arrow.forward', label: 'Forward-Pointing Arrow', Disabled
+                              ScrollView, 0x1131e8f00, {{390.0, 0.0}, {390.0, 844.0}}, Disabled
+                                Other, 0x1131e9040, {{390.0, 101.0}, {390.0, 1121.7}}
+                          Other, 0x1131e9180, {{0.0, 0.0}, {390.0, 844.0}}
+                            Other, 0x1131e92c0, {{0.0, 0.0}, {390.0, 141.0}}
+                          Other, 0x1131e9400, {{0.0, 0.0}, {390.0, 844.0}}
+                            Other, 0x1131e9540, {{0.0, 0.0}, {390.0, 141.0}}
+                Toolbar, 0x1131e9680, {{0.0, 0.0}, {390.0, 844.0}}, identifier: 'Toolbar', label: 'Toolbar'
+                  Other, 0x1131e97c0, {{0.0, 0.0}, {390.0, 844.0}}
+      Other, 0x1131e9900, {{0.0, 0.0}, {390.0, 844.0}}
+        Other, 0x1131e9a40, {{-390.0, -844.0}, {1170.0, 2532.0}}
+        Other, 0x1131e9b80, {{0.0, 47.0}, {390.0, 797.0}}
+          Button, 0x1131e9cc0, {{145.0, 43.0}, {100.0, 24.0}}, label: 'Sheet Grabber', value: Expanded
+          Other, 0x1131e9e00, {{0.0, 47.0}, {390.0, 797.0}}
+            Other, 0x1131e9f40, {{0.0, 47.0}, {390.0, 797.0}}
+              Other, 0x1131ea080, {{0.0, 47.0}, {390.0, 797.0}}
+                Other, 0x1131ea1c0, {{0.0, 47.0}, {390.0, 797.0}}
+                  NavigationBar, 0x1131ea300, {{0.0, 63.0}, {390.0, 54.0}}, identifier: 'Measurements'
+                    StaticText, 0x1131ea440, {{123.3, 72.3}, {143.0, 25.3}}, label: 'Measurements'
+                    Other, 0x1131ea580, {{295.3, 67.0}, {74.7, 36.0}}
+                      Other, 0x1131ea6c0, {{295.3, 67.0}, {74.7, 36.0}}
+                        Button, 0x1131ea800, {{295.3, 67.0}, {74.7, 36.0}}, label: 'Done'
+                  Other, 0x1131ea940, {{0.0, 47.0}, {390.0, 797.0}}
+                    Other, 0x1131eaa80, {{0.0, 47.0}, {390.0, 797.0}}
+                      Other, 0x1131eabc0, {{0.0, 47.0}, {390.0, 797.0}}
+                        Other, 0x1131ead00, {{0.0, 47.0}, {390.0, 797.0}}
+                          ScrollView, 0x1131eae40, {{0.0, 47.0}, {390.0, 797.0}}
+                            Other, 0x1131eaf80, {{0.0, -1924.3}, {390.0, 4607.0}}
+                              StaticText, 0x1131eb0c0, {{20.0, -1908.3}, {293.0, 141.7}}, label: 'Know your measures'
+                              StaticText, 0x1131eb200, {{20.0, -1758.7}, {347.0, 125.3}}, label: 'A little clarity in every cup.'
+                              StaticText, 0x1131eb340, {{40.0, -1589.3}, {229.3, 125.3}}, label: 'Find your cup size'
+                              StaticText, 0x1131eb480, {{40.0, -1456.0}, {279.7, 232.7}}, label: 'Choose how much chai you’d like per person.'
+                              StaticText, 0x1131eb5c0, {{40.0, -1178.7}, {191.7, 228.7}}, label: 'Small, 150 mL, A little cup'
+                                Image, 0x1131eb700, {{53.0, -1178.7}, {38.3, 28.7}}, identifier: 'cup.and.saucer', label: 'Cup On A Saucer'
+                                StaticText, 0x1131eb840, {{40.0, -1135.3}, {121.7, 58.7}}, label: 'Small'
+                                StaticText, 0x1131eb980, {{40.0, -1070.7}, {176.7, 63.3}}, label: '150 mL'
+                                StaticText, 0x1131ebac0, {{40.0, -1001.3}, {191.7, 51.3}}, label: 'A little cup'
+                              StaticText, 0x1131ebc00, {{40.0, -909.3}, {304.3, 236.7}}, label: 'Medium, 200 mL, An everyday cup'
+                                Image, 0x1131ebd40, {{48.0, -909.3}, {48.3, 36.0}}, identifier: 'cup.and.saucer', label: 'Cup On A Saucer'
+                                StaticText, 0x1131ebe80, {{40.0, -858.0}, {178.3, 58.7}}, label: 'Medium'
+                                StaticText, 0x1131f0000, {{40.0, -793.3}, {184.3, 63.3}}, label: '200 mL'
+                                StaticText, 0x1131f0140, {{40.0, -724.0}, {304.3, 51.3}}, label: 'An everyday cup'
+                              StaticText, 0x1131f0280, {{40.0, -640.3}, {286.0, 245.0}}, label: 'Large, 250 mL, A generous cup'
+                                Image, 0x1131f03c0, {{42.7, -640.3}, {58.7, 43.7}}, identifier: 'cup.and.saucer', label: 'Cup On A Saucer'
+                                StaticText, 0x1131f0500, {{40.0, -580.7}, {124.7, 58.7}}, label: 'Large'
+                                StaticText, 0x1131f0640, {{40.0, -516.0}, {183.0, 63.3}}, label: '250 mL'
+                                StaticText, 0x1131f0780, {{40.0, -446.7}, {286.0, 51.3}}, label: 'A generous cup'
+                              StaticText, 0x1131f08c0, {{40.0, -375.3}, {310.0, 459.3}}, label: 'Small is the default. These are serving sizes, not standard household cup measurements. Finished volume varies with boiling loss.'
+                              StaticText, 0x1131f0a00, {{20.0, 128.0}, {350.0, 701.3}}, label: 'Glass, 200 mL, A measuring equivalent, separate from serving size. Your household glass may hold a different amount.'
+                                StaticText, 0x1131f0b40, {{38.0, 146.0}, {132.7, 63.3}}, label: 'Glass'
+                                StaticText, 0x1131f0c80, {{38.0, 215.3}, {184.3, 63.3}}, label: '200 mL'
+                                StaticText, 0x1131f0dc0, {{38.0, 288.7}, {314.0, 522.7}}, label: 'A measuring equivalent, separate from serving size. Your household glass may hold a different amount.'
+                              StaticText, 0x1131f0f00, {{20.0, 841.3}, {350.0, 411.3}}, label: 'Teaspoon, 5 mL, Volume, not weight. Use a measuring teaspoon.'
+                                StaticText, 0x1131f1040, {{38.0, 859.3}, {230.0, 63.3}}, label: 'Teaspoon'
+                                StaticText, 0x1131f1180, {{38.0, 928.7}, {117.3, 63.3}}, label: '5 mL'
+                                StaticText, 0x1131f12c0, {{38.0, 1002.0}, {287.7, 232.7}}, label: 'Volume, not weight. Use a measuring teaspoon.'
+                              StaticText, 0x1131f1400, {{20.0, 1264.7}, {350.0, 353.3}}, label: 'Tablespoon, 15 mL, Equal to three teaspoons by volume.'
+                                StaticText, 0x1131f1540, {{38.0, 1282.7}, {273.3, 63.3}}, label: 'Tablespoon'
+                                StaticText, 0x1131f1680, {{38.0, 1352.0}, {142.3, 63.3}}, label: '15 mL'
+                                StaticText, 0x1131f17c0, {{38.0, 1425.3}, {295.0, 174.7}}, label: 'Equal to three teaspoons by volume.'
+                              StaticText, 0x1131f1900, {{20.0, 1630.0}, {350.0, 643.3}}, label: 'Grams, Weight, Spoon-to-gram conversion varies by ingredient. A teaspoon is not a fixed weight.'
+                                StaticText, 0x1131f1a40, {{38.0, 1648.0}, {156.3, 63.3}}, label: 'Grams'
+                                StaticText, 0x1131f1b80, {{38.0, 1717.3}, {168.3, 63.3}}, label: 'Weight'
+                                StaticText, 0x1131f1cc0, {{38.0, 1790.7}, {269.0, 464.7}}, label: 'Spoon-to-gram conversion varies by ingredient. A teaspoon is not a fixed weight.'
+                              StaticText, 0x1131f1e00, {{20.0, 2297.3}, {350.0, 357.3}}, label: 'Liquid volumes are rounded to 5 mL below 1 L and 10 mL at or above it; glass equivalents to the nearest quarter.'
+                            Other, 0x1131f1f40, {{0.0, 47.0}, {390.0, 797.0}}
+                              Other, 0x1131f2080, {{0.0, 47.0}, {390.0, 110.0}}
+                            Other, 0x1131f21c0, {{0.0, 47.0}, {390.0, 797.0}}
+                              Other, 0x1131f2300, {{0.0, 47.0}, {390.0, 110.0}}
+                            Other, 0x1131f2440, {{357.0, 117.0}, {30.0, 679.7}}, label: 'Vertical scroll bar, 7 pages', value: 52%
+                              Other, 0x1131f2580, {{384.0, 412.0}, {3.0, 114.0}}
+                            Other, 0x1131f26c0, {{357.0, 117.0}, {30.0, 679.7}}, label: 'Vertical scroll bar, 7 pages', value: 52%
+                              Other, 0x1131f2800, {{384.0, 412.0}, {3.0, 114.0}}
+                  Toolbar, 0x1131f2940, {{0.0, 47.0}, {390.0, 797.0}}, identifier: 'Toolbar', label: 'Toolbar'
+                    Other, 0x1131f2a80, {{0.0, 47.0}, {390.0, 797.0}}
+Path to element:
+ →Application, 0x112bb5180, pid: 75263, label: 'ChaiRatio'
+Query chain:
+ →Find: Target Application 'devplaceholder.O0I6EMQR.ChaiRatio'
+  Output: {
+    Application, 0x1131f2bc0, pid: 75263, label: 'ChaiRatio'
+  }

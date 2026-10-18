@@ -1,9 +1,21 @@
 # Ratio selection and persistence
 
-Status: Ready for implementation  
+Platform revision, 11 October 2026: the project now supports iPhone and iPad only. Earlier Mac requirements and verification results below are historical. Native macOS, Mac Catalyst, and Designed for iPhone/iPad on Mac are excluded.
+
+Status: Earlier implementation milestone; manual verification pending. UI alignment with the approved Daily Ritual design is implemented; see [current verification](daily-ritual-verification.md).
+
+> **Indicator and paging revision — 18 October 2026:** Restore native horizontal paging at every size, including landscape and larger text. Use tappable indicators with accessibility labels instead of visible ratio labels, and soft top scroll-edge effects. See [implementation and verification](indicator-paging-verification.md). This supersedes conflicting parts of the 17 October revision below.
+
+> **Adaptive layout revision — 17 October 2026:** The product owner authorized layout changes for screen size, orientation, and accessibility. See [adaptive layout and verification](adaptive-layout-verification.md). Labeled ratio choices replace dots; short windows and larger text use a single vertical scrolling flow. This supersedes the fixed-footer and paging requirements below in constrained layouts.
+
+> **Design update — 10 October 2026:** [Daily Ritual is the approved final app design](../../design-showcase/APPROVED-DESIGN.md). Its horizontal ratio paging, absence of up/down buttons, and persistent navigation-bar info sheet supersede conflicting UI details below. This document preserves the earlier milestone’s implementation scope and architecture; it does not establish the final visual target.
+
 Decision confirmation: 6 October 2026  
-Source: [Product requirements](../../PRD.md), principally sections 8.1, 9, 10, and 11  
+Source: [Product requirements](../../prd/PRD.md), principally sections 8.1, 9, 10, and 11
+
 Architecture reference: [SwiftUI MVVM-C Best Practices](https://github.com/heyflavio/SwiftUI-MVVM-C-Best-Practices)
+
+Verification evidence: [Implementation and verification notes](verification.md)
 
 ## Outcome
 
@@ -138,12 +150,12 @@ ChaiRatio/
 │   ├── AppCoordinator.swift
 │   └── Protocols/
 │       ├── AppCoordinatorProtocol.swift
-│       └── ComponentCoordinatorProtocol.swift
+│       └── Coordinator.swift
 ├── Components/
 │   ├── RatioSelection/
 │   │   ├── Coordinator/
 │   │   │   ├── RatioSelectionCoordinator.swift
-│   │   │   └── Protocols/RatioSelectionCoordinatorProtocol.swift
+│   │   │   └── Protocols/RatioSelectionCoordinatorDelegate.swift
 │   │   └── RatioSelectionScreen/
 │   │       ├── ViewModel/
 │   │       │   ├── RatioSelectionViewModel.swift

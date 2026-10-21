@@ -1,6 +1,7 @@
 # Calculate your batch
 
-Status: Draft feature specification for product review; implementation has not started.  
+Status: Calculator implemented on 18 October 2026; device and simulator UX acceptance pending owner review. Methods remains a development-only handoff.
+
 Prepared: 18 October 2026  
 Platform: iPhone and iPad, iOS/iPadOS 26 or later.
 
@@ -8,7 +9,9 @@ Platform: iPhone and iPad, iOS/iPadOS 26 or later.
 
 Replace the temporary Calculator destination with a usable, offline batch calculator. A person arrives with their chosen water:milk ratio, sees water and milk amounts immediately, and changes the batch without doing the arithmetic themselves.
 
-“Calculate your batch” is this feature's name. Keep **“Make chai”** as the visible screen heading from the approved design; use **“Calculator”** as the inline navigation title, consistent with the current native destination.
+“Calculate your batch” is this feature's name. Use **“Make chai”** as the native large navigation title; it collapses into the navigation bar as content scrolls. Do not duplicate it in the scroll content.
+
+**18 October UI correction:** The owner requested a ratio-coloured calculator background, a collapsing navigation title, glass counts as the primary answer and a glass volume matching the selected serving size. These requirements supersede conflicting details in the original HTML and PRD. Liquid calculation and metric rounding rules are unchanged.
 
 Sources, in order of responsibility:
 
@@ -16,9 +19,9 @@ Sources, in order of responsibility:
 - [Daily Ritual design decision](../../design-showcase/APPROVED-DESIGN.md) and [frozen approved page](../../design-showcase/daily-ritual-approved-2026-10-10.html?preview=calculator): visual hierarchy and navigation. The page's `calculatorMarkup`, `liquidResults`, `doseCopy` and `mountRitual` define the relevant reference behaviour.
 - [Calculator reference image](../../design-showcase/daily-ritual-preview.png): compact layout reference.
 - [17 October adaptive revision](../ratio-selection/adaptive-layout-verification.md) and [18 October revision](../ratio-selection/indicator-paging-verification.md): content must adapt; the calculator retains soft top scroll edges.
-- [Current Calculator placeholder](../../ChaiRatio/Components/Calculator/CalculatorPlaceholderView.swift), [navigation](../../ChaiRatio/Components/RatioSelection/RatioSelectionView.swift) and [ratio store](../../ChaiRatio/Shared/RatioPreferences/RatioPreferenceStore.swift): integration baseline. The earlier ratio feature's proposed MVVM-C tree does not describe the current implementation.
+- [Calculator](../../ChaiRatio/Components/Calculator/CalculatorView.swift), [coordinator](../../ChaiRatio/AppRoot/ChaiCoordinator.swift), [navigation](../../ChaiRatio/Components/RatioSelection/RatioSelectionView.swift) and [ratio store](../../ChaiRatio/Shared/RatioPreferences/RatioPreferenceStore.swift): current integration. The earlier placeholder has been replaced within the existing project folders.
 
-The frozen HTML remains unchanged. This draft resolves details the approved page leaves implicit; proposed decisions below become the implementation contract when this spec is accepted. It does not mark new design or culinary content as approved.
+The frozen HTML remains unchanged. The product owner's 18 October implementation request adopts this calculator contract and authorizes adaptive layout changes plus a coordinator/view-model implementation. It does not mark new culinary content as approved. See [implementation and verification](implementation-verification.md) for delivered scope and remaining checks.
 
 ## Scope and delivery boundary
 
@@ -52,19 +55,17 @@ The next feature owns the Methods list, recipe details, cooking steps and comple
 
 ## Screen composition
 
-The screen's characteristic element is the paired water/milk answer. Preserve the warm cream background, serif heading, rounded cream cards, brown primary action and restrained native controls. The calculator background stays paper-coloured when ratio changes; chai-tone backgrounds remain part of Home.
+The screen's characteristic element is the paired water/milk answer. Use the selected ratio's light/dark chai-tone background, rounded cream cards, brown primary action and restrained native controls. The native large title supplies the heading and scroll-collapse behaviour.
 
 Compact, default-text reading order:
 
 ```text
 Back                                Info
-                Calculator
-
-Make chai
+Make chai (large native title; collapses on scroll)
 
 [ Water                 ][ Milk                  ]
+[ ≈ 2 glasses           ][ ≈ 2 glasses           ]
 [ 300 mL                ][ 300 mL                ]
-[ ≈ 1.5 glasses         ][ ≈ 1.5 glasses         ]
 600 mL starting liquid · 4 × 150 mL servings
 
 [ Servings                         −  4  +       ]
@@ -89,7 +90,7 @@ This diagram describes order, not fixed dimensions or exact system navigation-ba
 
 - Reuse the existing `RitualPalette` ink, secondary, accent, on-accent and paper roles. Use semantic roles for raised surfaces and control wells: the HTML distinguishes `--card` (#FFFCF7 in light appearance) from `--soft` (#E9D8C3). The current native `card` token is the latter colour; add a distinct surface role rather than using tan for every calculator card or changing existing screens unintentionally.
 - Match the reference's light cream result/control cards and tan control wells. Dark variants must preserve that surface hierarchy and be checked with actual foreground/background contrast measurements.
-- Use a Dynamic Type serif title, with system text for labels, controls and quantities. Quantities use prominent, monospaced digits; units are smaller but readable. Keep the number and unit together when possible; allow a deliberate line break when necessary.
+- Use the native Dynamic Type large navigation title, with system text for labels, controls and quantities. Quantities use prominent, monospaced digits; units are smaller but readable. Keep the number and unit together when possible; allow a deliberate line break when necessary.
 - Starting layout targets: 22 pt outer horizontal margin, 12 pt between ingredient cards, approximately 20 pt card padding, 23 pt card corners and 16–24 pt between groups. These are reference-derived targets, not constraints that override content fitting.
 - Reuse the current primary action's visual style, with at least 52 pt height and flexible height for larger text. Use SF Symbols for navigation, info, plus/minus and ingredient illustrations where suitable. Decorative symbols have no separate accessibility focus.
 - Keep taste controls visible in the main flow, as approved. Do not place them in a collapsed customization section.
@@ -152,7 +153,7 @@ target volume       = S × V
 starting liquid     = target volume / R
 water               = starting liquid × a / (a + b)
 milk                = starting liquid × b / (a + b)
-ingredient glasses  = ingredient's unrounded mL / 200
+ingredient glasses  = ingredient's unrounded mL / V
 ```
 
 `R` is a recipe-data concern for later validated content, with no exposed adjustment in this screen. Do not apply an evaporation percentage, top-up amount, tea absorption or displacement assumption. The summary describes starting liquid; it does not promise an exact finished yield.
@@ -160,11 +161,11 @@ ingredient glasses  = ingredient's unrounded mL / 200
 Formatting rules:
 
 1. Retain unrounded values internally. Round each liquid independently to the nearest 5 mL when its unrounded amount is below 1,000 mL, or nearest 10 mL at/above 1,000 mL. Positive halfway values round upward; protect exact half-step cases from floating-point artefacts.
-2. Keep **mL as the primary value at every batch size**. At an unrounded ingredient amount of at least 1,000 mL, add a secondary L equivalent derived from its displayed mL, with up to two decimal places and no unnecessary trailing zeros.
+2. Show **glass count as the prominent primary value**, with rounded mL as the smaller secondary value. One glass equals the selected serving size (150, 200 or 250 mL). At an unrounded ingredient amount of at least 1,000 mL, add a secondary L equivalent derived from its displayed mL, with up to two decimal places and no unnecessary trailing zeros.
 3. Derive glass equivalents from each **unrounded** ingredient amount; round to the nearest quarter glass, with halfway values upward. Prefix with **≈**. Use decimal quarters (0.25, 0.5, 0.75, 1.25…), matching the approved page. Use singular only for 1 glass.
 4. Summary example: **“600 mL starting liquid · 4 × 150 mL servings”**. Use singular for 1 serving and locale-aware number formatting. Starting liquid uses the underlying total, not the sum of independently rounded card values.
 5. Because the card values are rounded independently, their sum can differ slightly from the total. Do not alter one ingredient to force the displayed sum to match or use displayed values as future calculation inputs. The measurement guide explains rounding.
-6. Retain **“1 glass = 200 mL. Finished yield is estimated; boiling loss varies.”** below the ingredient-preference note. A household glass is not assumed to hold 200 mL.
+6. Show **“1 glass = [selected serving size] mL. Finished yield is estimated; boiling loss varies.”** below the ingredient-preference note. Keep the measurement sheet synchronized with this definition; a household glass is not assumed to match it.
 
 ### Reference calculations
 
@@ -172,16 +173,16 @@ All rows use R = 1.0. Water and milk columns are displayed mL. Glass columns are
 
 | Servings × size | Water:milk | Starting mL | Water mL | Milk mL | Water glasses | Milk glasses |
 | --- | --- | --- | --- | --- | --- | --- |
-| 4 × 150 | 3:1 | 600 | 450 | 150 | 2.25 | 0.75 |
-| 4 × 150 | 2:1 | 600 | 400 | 200 | 2 | 1 |
-| 4 × 150 | 1:1 | 600 | 300 | 300 | 1.5 | 1.5 |
-| 4 × 150 | 1:2 | 600 | 200 | 400 | 1 | 2 |
-| 4 × 150 | 1:3 | 600 | 150 | 450 | 0.75 | 2.25 |
-| 1 × 150 | 3:1 | 150 | 115 | 40 | 0.5 | 0.25 |
+| 4 × 150 | 3:1 | 600 | 450 | 150 | 3 | 1 |
+| 4 × 150 | 2:1 | 600 | 400 | 200 | 2.75 | 1.25 |
+| 4 × 150 | 1:1 | 600 | 300 | 300 | 2 | 2 |
+| 4 × 150 | 1:2 | 600 | 200 | 400 | 1.25 | 2.75 |
+| 4 × 150 | 1:3 | 600 | 150 | 450 | 1 | 3 |
+| 1 × 150 | 3:1 | 150 | 115 | 40 | 0.75 | 0.25 |
 | 1 × 200 | 2:1 | 200 | 135 | 65 | 0.75 | 0.25 |
-| 13 × 150 | 1:1 | 1,950 | 975 | 975 | 5 | 5 |
-| 8 × 250 | 1:1 | 2,000 | 1,000 | 1,000 | 5 | 5 |
-| 20 × 250 | 2:1 | 5,000 | 3,330 | 1,670 | 16.75 | 8.25 |
+| 13 × 150 | 1:1 | 1,950 | 975 | 975 | 6.5 | 6.5 |
+| 8 × 250 | 1:1 | 2,000 | 1,000 | 1,000 | 4 | 4 |
+| 20 × 250 | 2:1 | 5,000 | 3,330 | 1,670 | 13.25 | 6.75 |
 
 The 1,000 mL cards add **1 L**; the final row adds **3.33 L** and **1.67 L**. The 150 mL minimum case deliberately tests independent halfway rounding: 115 + 40 is 155, while starting liquid remains 150 mL.
 
@@ -217,7 +218,7 @@ Use a single vertical content scroll view with soft top scroll edges. Keep resul
 - Float Methods above the bottom safe area in normal layouts, matching the approved page. Reserve measured trailing scroll space so the last note can be scrolled completely above it. No essential content may remain hidden behind the action.
 - In short windows, when text growth makes the floating action consume too much usable height, or while the keyboard is present, place Methods after the content in the scroll flow. This is a proposed adaptive detail consistent with the authorised layout direction. Do not pin it above the keyboard at the expense of the count field or its error.
 - Use at least 44 × 44 pt interaction targets, Dynamic Type through Accessibility 5, and visible selection cues beyond colour. Target at least 4.5:1 normal-text contrast and 3:1 large-text/essential-control contrast in both appearances; measure actual rendered colour pairs.
-- VoiceOver reads heading, Water result, Milk result, batch summary, inputs, availability note and Methods in logical order. Each result is one coherent item, e.g. “Water, 300 millilitres, approximately 1.5 glasses.” Expand symbols and units in speech.
+- VoiceOver reads heading, Water result, Milk result, batch summary, inputs, availability note and Methods in logical order. Each result is one coherent item, e.g. “Water, approximately 2 glasses, 300 millilitres.” Expand symbols and units in speech.
 - The count has an editable value; plus/minus have explicit names. Picker accessibility values include the selected option and serving volume where applicable. A custom selectable row exposes its selected trait. Errors are associated with the count and announced without moving focus.
 - Preserve focus on the changed control during recalculation. Announce a concise combined liquid result after changes settle; coalesce repeated stepper changes to avoid a queue of obsolete announcements. Taste-only changes must not announce a changed liquid quantity.
 - Reduce Motion removes decorative value transitions; results remain immediate. Increase Contrast and Reduce Transparency retain readable surfaces and controls. Support system keyboard focus, Switch Control and Voice Control using native semantics and unique labels. No haptics or animation is required to understand the answer.
@@ -226,7 +227,7 @@ Design guidance consulted through the Apple design skill: `layout.md › Adaptab
 
 ## Implementation boundaries
 
-Follow the current native app's lightweight observable-state structure. This feature does not require migrating the app to the historical coordinator proposal or adding a new framework.
+Keep the current project folders and lightweight observable-state structure. Per the product owner's implementation request, use a retained `CalculatorViewModel` and `ChaiCoordinator` for the existing navigation stack, measurement presentation and typed Methods handoff. No new framework is required.
 
 - **Shared ratio preference store:** remains the single source of truth for the selected preset and its persisted ID. Reuse `RatioCatalog` validation and fallback. Never persist array positions, formatted names or another calculator-specific ratio preference.
 - **Batch session state:** owns validated count, serving size, strength, sweetness and view-restoration needs. Its lifetime survives popping Calculator to Home; own it above the destination or inject a retained session. Do not recreate defaults every time the destination view appears. Field text/focus remains presentation state.
@@ -252,7 +253,7 @@ Suggested additions are a calculator view, retained batch state, calculation/for
 ### UI and manual checks
 
 - On entry from each Home ratio, show its matching result and picker selection without a flash of default 1:1.
-- Check the approved default case visually: 4 Small servings, Balanced, 300 mL water, 300 mL milk and approximately 1.5 glasses each.
+- Check the approved default case visually: 4 Small servings, Balanced, 300 mL water, 300 mL milk and approximately 2 glasses each, with 1 glass = 150 mL.
 - Verify editable count, min/max disabled controls, all named pickers, keyboard Done and hardware-keyboard submission. Check the last note and Methods remain fully reachable.
 - Verify Calculator → measurements → dismiss and Calculator → Methods → Back with retained state and scroll. Verify Home → Calculator re-entry and repeated action taps.
 - Inspect a small portrait iPhone, landscape iPhone, portrait/landscape iPad and narrow iPad window. Repeat critical flows at Accessibility 5, in dark appearance, with Increase Contrast, Reduce Motion and Reduce Transparency.
@@ -263,6 +264,6 @@ Feature acceptance requires usable liquid results, the specified interactions an
 
 ## Content dependencies and review points
 
-No additional product answer is required to draft or implement the liquid calculator. Review the proposed defaults/state lifetime and adaptive Methods placement above before treating this draft as approved.
+No additional product answer was required to implement the liquid calculator. The implementation follows the defaults, session lifetime and adaptive Methods placement above; visual and device acceptance remains with the owner as recorded in the verification checklist.
 
 Kitchen validation remains required for tea/sugar dose tables, applicable batch ranges, timings and any future non-1.0 recipe yield. The explicit unavailable states let the liquid calculator be built and reviewed while those content tasks continue. They do not satisfy the PRD's eventual validated ingredient and recipe requirements.

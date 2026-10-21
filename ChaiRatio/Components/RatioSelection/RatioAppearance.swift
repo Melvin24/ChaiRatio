@@ -7,6 +7,9 @@ enum RitualPalette {
     static func onAccent(dark: Bool) -> Color { dark ? Color(hex: 0x332218) : Color(hex: 0xfffaf1) }
     static func paper(dark: Bool) -> Color { Color(hex: dark ? 0x2b231c : 0xf8f2e9) }
     static func card(dark: Bool) -> Color { Color(hex: dark ? 0x403326 : 0xe9d8c3) }
+    /// Raised content and recessed controls have distinct roles in Daily Ritual.
+    static func surface(dark: Bool) -> Color { Color(hex: dark ? 0x362b22 : 0xfffcf7) }
+    static func controlWell(dark: Bool) -> Color { card(dark: dark) }
     static let water = Color(hex: 0x99603b)
     static let milk = Color(hex: 0xf7e3c6)
 }

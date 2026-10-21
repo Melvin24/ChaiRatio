@@ -2,21 +2,18 @@ import SwiftUI
 
 struct RatioSelectionView: View {
     let store: RatioPreferenceStore
-    @State private var path: [CalculatorRoute] = []
-    @State private var showingMeasures = false
+    @Bindable var coordinator: ChaiCoordinator
     @Environment(\.colorScheme) private var scheme
 
     var body: some View {
-        NavigationStack(path: $path) {
-            RatioPagerView(store: store, isActive: path.isEmpty && !showingMeasures) {
-                guard path.isEmpty, !showingMeasures else { return }
-                path = [.init(presetID: store.current.id)]
-            }
+        NavigationStack(path: $coordinator.path) {
+            RatioPagerView(store: store, isActive: coordinator.path.isEmpty && !coordinator.showingMeasures,
+                           makeChai: coordinator.openCalculator)
                 .foregroundStyle(RitualPalette.ink(dark: scheme == .dark))
                 .background { RatioSelectionBackground(store: store) }
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
-                        Button { showingMeasures = true } label: {
+                        Button(action: coordinator.openMeasures) {
                             Image(systemName: "info.circle")
                                 .font(.title3)
                                 .frame(minWidth: 44, minHeight: 44)
@@ -26,11 +23,20 @@ struct RatioSelectionView: View {
                 }
                 .navigationTitle("ChaiRatio")
                 .toolbarTitleDisplayMode(.inline)
-                .navigationDestination(for: CalculatorRoute.self) { route in
-                    let preset = store.catalog.resolve(route.presetID)
-                    CalculatorPlaceholderView(ratioText: preset.ratioText, name: preset.name)
+                .navigationDestination(for: ChaiCoordinator.Route.self) { route in
+                    switch route {
+                    case .calculator:
+                        CalculatorView(model: coordinator.calculator, coordinator: coordinator)
+                    #if DEBUG
+                    case .methodsPreview(let batch):
+                        MethodsDevelopmentView(batch: batch, catalog: store.catalog,
+                                               openMeasures: coordinator.openMeasures)
+                    #endif
+                    }
                 }
-                .sheet(isPresented: $showingMeasures) { MeasuresView() }
+        }
+        .sheet(isPresented: $coordinator.showingMeasures) {
+            MeasuresView(servingSize: coordinator.calculator.servingSize)
         }
         .tint(RitualPalette.accent(dark: scheme == .dark))
     }
@@ -76,8 +82,4 @@ struct MakeChaiButton: View {
         .frame(maxWidth: 560)
         .frame(maxWidth: .infinity)
     }
-}
-
-private struct CalculatorRoute: Hashable {
-    let presetID: String
 }

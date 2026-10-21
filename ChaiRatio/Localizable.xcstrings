@@ -1,11 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ mL" : {
-      "comment" : "Serving volume in milliliters."
-    },
-    "%@ milk" : {
-      "comment" : "Exact milk percentage of the water and milk mixture."
+    "%@ · %@" : {
+      "comment" : "Water-to-milk ratio and the name of the preset."
     },
     "%@ · %@ water" : {
       "comment" : "Mixture percentages. First value describes the milk share, second is the water percentage.",
@@ -18,8 +15,40 @@
         }
       }
     },
+    "%@ L" : {
+      "comment" : "Secondary litre equivalent, derived from the displayed millilitres."
+    },
+    "%@ milk" : {
+      "comment" : "Exact milk percentage of the water and milk mixture."
+    },
+    "%@ mL" : {
+      "comment" : "Glass volume matches the selected serving size.\nRounded ingredient volume, secondary to the glass count.\nServing volume in milliliters."
+    },
+    "%@ mL starting liquid · %lld × %@ mL servings" : {
+      "comment" : "Starting liquid, number of servings, then millilitres per serving. Pluralize by serving count.",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$@ mL starting liquid · %2$lld × %3$@ mL serving"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$@ mL starting liquid · %2$lld × %3$@ mL servings"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "%@, %@" : {
-      "comment" : "Ratio selection button. First value is the water-to-milk ratio, second is the preset name.",
+      "comment" : "Ingredient name followed by its spoken volume and glass equivalent.\nRatio selection button. First value is the water-to-milk ratio, second is the preset name.",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -28,6 +57,12 @@
           }
         }
       }
+    },
+    "%@, %@ millilitres" : {
+      "comment" : "Serving size name and volume for accessibility."
+    },
+    "%@: %@" : {
+      "comment" : "Unique choice button name, e.g. Tea strength: Regular."
     },
     "%@:%@" : {
       "comment" : "Water-to-milk ratio. First value is water parts, second is milk parts.",
@@ -73,13 +108,28 @@
         }
       }
     },
-    "15 mL" : {
+    "+" : {
 
     },
-    "200 mL" : {
+    "−" : {
 
+    },
+    "≈ %@" : {
+      "comment" : "Approximate number of glasses matching the selected serving size."
+    },
+    "≈ %@ glasses" : {
+      "comment" : "Approximate number of selected-serving-size glasses, in decimal quarters."
+    },
+    "≈ 1 glass" : {
+
+    },
+    "1 glass = %@ mL. Finished yield is estimated; boiling loss varies." : {
+      "comment" : "Glass volume matches the currently selected serving size (150, 200 or 250 mL)."
     },
     "5 mL" : {
+
+    },
+    "15 mL" : {
 
     },
     "A generous cup" : {
@@ -91,31 +141,48 @@
     "A little cup" : {
 
     },
-    "A measuring equivalent, separate from serving size. Your household glass may hold a different amount." : {
-
-    },
     "A milk-heavy cup. Simmer carefully." : {
 
     },
     "An everyday cup" : {
 
     },
-    "Balanced" : {
-
+    "Approximately %@ glasses, %@ millilitres" : {
+      "comment" : "Spoken glass count followed by ingredient volume; glass size follows the selected serving size.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Approximately %1$@ glasses, %2$@ millilitres"
+          }
+        }
+      }
     },
-    "Calculator" : {
+    "approximately %@ milk" : {
+      "comment" : "Milk percentage rounded to a whole number."
+    },
+    "Approximately 1 glass, %@ millilitres" : {
+      "comment" : "Spoken ingredient volume with a singular glass equivalent."
+    },
+    "Balanced" : {
 
     },
     "ChaiRatio" : {
 
     },
-    "Close measurements and return to your chai." : {
-      "comment" : "Accessibility hint for the Done button in the measurements reference sheet."
-    },
     "Choose how much chai you’d like per person." : {
 
     },
+    "Close measurements and return to your chai." : {
+      "comment" : "Accessibility hint for the Done button in the measurements reference sheet."
+    },
+    "Decrease servings" : {
+
+    },
     "Done" : {
+
+    },
+    "Enter a whole number from 1 to 20." : {
 
     },
     "Equal parts water and milk." : {
@@ -130,10 +197,22 @@
     "Find your cup size" : {
 
     },
+    "For this batch, one glass matches your selected serving size. Your household glass may hold a different amount." : {
+
+    },
+    "glass" : {
+
+    },
     "Glass" : {
 
     },
+    "glasses" : {
+
+    },
     "Grams" : {
+
+    },
+    "Increase servings" : {
 
     },
     "Know your measures" : {
@@ -151,10 +230,16 @@
     "Liquid volumes are rounded to 5 mL below 1 L and 10 mL at or above it; glass equivalents to the nearest quarter." : {
 
     },
+    "Make chai" : {
+
+    },
     "Measurements" : {
 
     },
     "Medium" : {
+
+    },
+    "Milk" : {
 
     },
     "More milk than water. A rounder cup." : {
@@ -172,7 +257,37 @@
     "Most water · Start of range" : {
 
     },
+    "None" : {
+
+    },
+    "Number of servings" : {
+
+    },
+    "Preparation guides are not available yet." : {
+
+    },
+    "Regular" : {
+
+    },
+    "Regular tea · No sugar. Tea amount is not available yet. Add tea to taste." : {
+
+    },
+    "Regular tea · Regular sweetness. Tea and sugar amounts are not available yet. Add to taste." : {
+
+    },
+    "Regular tea · Sweet sweetness. Tea and sugar amounts are not available yet. Add to taste." : {
+
+    },
     "Rich" : {
+
+    },
+    "Servings" : {
+
+    },
+    "Servings must be between 1 and 20." : {
+
+    },
+    "Size of each serving" : {
 
     },
     "Small" : {
@@ -184,10 +299,31 @@
     "Spoon-to-gram conversion varies by ingredient. A teaspoon is not a fixed weight." : {
 
     },
+    "Strong" : {
+
+    },
+    "Strong tea · No sugar. Tea amount is not available yet. Add tea to taste." : {
+
+    },
+    "Strong tea · Regular sweetness. Tea and sugar amounts are not available yet. Add to taste." : {
+
+    },
+    "Strong tea · Sweet sweetness. Tea and sugar amounts are not available yet. Add to taste." : {
+
+    },
+    "Sweet" : {
+
+    },
+    "Sweetness" : {
+
+    },
     "Swipe to explore · %@" : {
       "comment" : "Ratio selector hint. The variable is the selected position, such as 3 of 5."
     },
     "Tablespoon" : {
+
+    },
+    "Tea strength" : {
 
     },
     "Tea-forward" : {
@@ -199,23 +335,23 @@
     "Volume, not weight. Use a measuring teaspoon." : {
 
     },
-    "WATER : MILK" : {
+    "Water" : {
 
     },
-    "Water : Milk" : {
+    "Water : milk" : {
+
+    },
+    "WATER : MILK" : {
 
     },
     "Water to milk ratio" : {
 
     },
+    "Water, %@ millilitres. Milk, %@ millilitres." : {
+      "comment" : "Combined liquid result announced after batch inputs settle."
+    },
     "Weight" : {
 
-    },
-    "Your selected ratio is ready. Ingredient calculations will be added in the next feature." : {
-
-    },
-    "approximately %@ milk" : {
-      "comment" : "Milk percentage rounded to a whole number."
     }
   },
   "version" : "1.0"

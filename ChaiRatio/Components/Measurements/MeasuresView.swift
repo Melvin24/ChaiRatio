@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MeasuresView: View {
+    var servingSize: BatchServingSize = .small
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var scheme
 
@@ -10,7 +11,7 @@ struct MeasuresView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     MeasuresHeader()
                     ServingSizesSection()
-                    MeasurementDefinitions()
+                    MeasurementDefinitions(servingSize: servingSize)
                     MeasurementPrecisionNote()
                 }
                 .padding(.horizontal, 20)
@@ -215,9 +216,9 @@ private enum MeasurementUnit: CaseIterable, Identifiable {
         case .grams: "Grams"
         }
     }
-    var value: LocalizedStringResource {
+    func value(servingSize: BatchServingSize) -> LocalizedStringResource {
         switch self {
-        case .glass: "200 mL"
+        case .glass: LocalizedStringResource("\(servingSize.milliliters, format: .number) mL", comment: "Glass volume matches the selected serving size.")
         case .teaspoon: "5 mL"
         case .tablespoon: "15 mL"
         case .grams: "Weight"
@@ -225,7 +226,7 @@ private enum MeasurementUnit: CaseIterable, Identifiable {
     }
     var detail: LocalizedStringResource {
         switch self {
-        case .glass: "A measuring equivalent, separate from serving size. Your household glass may hold a different amount."
+        case .glass: "For this batch, one glass matches your selected serving size. Your household glass may hold a different amount."
         case .teaspoon: "Volume, not weight. Use a measuring teaspoon."
         case .tablespoon: "Equal to three teaspoons by volume."
         case .grams: "Spoon-to-gram conversion varies by ingredient. A teaspoon is not a fixed weight."
@@ -234,30 +235,32 @@ private enum MeasurementUnit: CaseIterable, Identifiable {
 }
 
 private struct MeasurementDefinitions: View {
+    let servingSize: BatchServingSize
     @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         if typeSize >= .xxLarge {
-            MeasurementDefinitionColumn()
+            MeasurementDefinitionColumn(servingSize: servingSize)
         } else {
             ViewThatFits(in: .horizontal) {
-                MeasurementDefinitionGrid()
-                MeasurementDefinitionColumn()
+                MeasurementDefinitionGrid(servingSize: servingSize)
+                MeasurementDefinitionColumn(servingSize: servingSize)
             }
         }
     }
 }
 
 private struct MeasurementDefinitionGrid: View {
+    let servingSize: BatchServingSize
     var body: some View {
         Grid(alignment: .topLeading, horizontalSpacing: 12, verticalSpacing: 12) {
             GridRow(alignment: .top) {
-                MeasurementGridCard(unit: .glass)
-                MeasurementGridCard(unit: .teaspoon)
+                MeasurementGridCard(unit: .glass, servingSize: servingSize)
+                MeasurementGridCard(unit: .teaspoon, servingSize: servingSize)
             }
             GridRow(alignment: .top) {
-                MeasurementGridCard(unit: .tablespoon)
-                MeasurementGridCard(unit: .grams)
+                MeasurementGridCard(unit: .tablespoon, servingSize: servingSize)
+                MeasurementGridCard(unit: .grams, servingSize: servingSize)
             }
         }
     }
@@ -265,20 +268,22 @@ private struct MeasurementDefinitionGrid: View {
 
 private struct MeasurementGridCard: View {
     let unit: MeasurementUnit
+    let servingSize: BatchServingSize
     @ScaledMetric(relativeTo: .body) private var minimumWidth = 260
 
     var body: some View {
-        MeasurementDefinition(unit: unit)
+        MeasurementDefinition(unit: unit, servingSize: servingSize)
             // ViewThatFits rejects this two-column candidate when its scaled minimum can't fit.
             .frame(minWidth: minimumWidth, idealWidth: minimumWidth, maxWidth: .infinity)
     }
 }
 
 private struct MeasurementDefinitionColumn: View {
+    let servingSize: BatchServingSize
     var body: some View {
         VStack(spacing: 12) {
             ForEach(MeasurementUnit.allCases) { unit in
-                MeasurementDefinition(unit: unit)
+                MeasurementDefinition(unit: unit, servingSize: servingSize)
             }
         }
     }
@@ -286,6 +291,7 @@ private struct MeasurementDefinitionColumn: View {
 
 private struct MeasurementDefinition: View {
     let unit: MeasurementUnit
+    let servingSize: BatchServingSize
     @Environment(\.colorScheme) private var scheme
 
     var body: some View {
@@ -294,11 +300,11 @@ private struct MeasurementDefinition: View {
                 HStack(alignment: .firstTextBaseline, spacing: 12) {
                     Text(unit.name).fixedSize()
                     Spacer(minLength: 0)
-                    Text(unit.value).fixedSize()
+                    Text(unit.value(servingSize: servingSize)).fixedSize()
                 }
                 VStack(alignment: .leading, spacing: 6) {
                     Text(unit.name)
-                    Text(unit.value)
+                    Text(unit.value(servingSize: servingSize))
                 }
             }
             .font(.headline)
